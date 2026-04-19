@@ -1,53 +1,51 @@
-# AI Subscription Strategy (OAuth-First)
+# AI Subscription Strategy (OAuth & Direct)
 
-This setup is optimized to use your **paid consumer subscriptions** (Claude Max, Gemini Advanced, ChatGPT Plus, GitHub Copilot) via OAuth. This is the most cost-effective way as it utilizes the monthly plans you already pay for.
+This setup is optimized to use your **paid consumer subscriptions** (Claude Max, Gemini Advanced, ChatGPT Plus) via OAuth, while keeping specialized plans (MiniMax) on direct API keys.
 
-## 🔑 Linking Your Subscriptions
+## 🔑 Why Your Setup May Have Felt "Broken"
 
-Run the login helper to connect each provider to OpenCode:
+If you were previously seeing "Provider not found" or "API Key Required" errors despite having a subscription, it was likely because your `global.json` had **manual provider overrides**.
+
+I have **removed these overrides**. OpenCode will now automatically use your **active OAuth sessions** if you are logged in.
+
+## 🛠️ Linking Your Subscriptions
+
+You MUST link your subscriptions via the browser for them to work in the CLI. Run the helper to start:
 
 ```bash
 npm run login-all
 ```
 
-## 1. Primary Coding: Anthropic (OAuth)
-
-Utilizes your **Claude Max** subscription.
+## 1. Primary Coding: Anthropic (Claude Max)
 
 - **Model**: `anthropic/claude-3-7-sonnet-20250219`
-- **Why**: Best-in-class coding performance included in your $20/mo plan.
+- **Authentication**: OAuth (included in your $20/mo plan).
+- **Why**: State-of-the-art coding intelligence.
 
-## 2. Context Giant: Google Gemini (OAuth)
-
-Utilizes your **Gemini Advanced** subscription.
+## 2. Context Giant: Google Gemini (Advanced)
 
 - **Model**: `google/gemini-3.1-pro`
-- **Why**: 1M+ context window. Perfect for "reading" your whole project at once.
+- **Authentication**: OAuth (utilizes your Gemini Advanced quota).
+- **Why**: Best for large repository analysis (1M+ tokens).
 
-## 3. Specialized Logic: OpenAI (OAuth)
+## 3. Specialized Logic: OpenAI (ChatGPT Plus)
 
-Utilizes your **ChatGPT Plus** subscription.
+- **Model**: `openai/o1-preview` or `openai/gpt-4o`
+- **Authentication**: OAuth (utilizes your ChatGPT Plus quota).
 
-- **Model**: `openai/o1-preview`
-- **Why**: Advanced reasoning for complex architecture and planning.
+## 4. Reasoning Specialist: MiniMax.io
 
-## 4. Coding Specialist: GitHub Copilot (OAuth)
-
-Utilizes your **GitHub Copilot/Codex** subscription.
-
-- **Model**: `github-copilot/gpt-4o` (or available models)
-- **Why**: Seamless integration for IDE-like behaviors.
-
-## 5. Token Plan: MiniMax (OAuth/API)
-
-Utilizes your **MiniMax.io** token plan.
-
-- **Model**: `minimax-coding-plan/MiniMax-M2.7`
-- **Why**: High-speed reasoning with dedicated token quotas.
+- **Model**: `minimax/m2.7`
+- **Authentication**: **API Key** (Required).
+- **Setup**: Export your key in `~/.zshrc`:
+  ```bash
+  export MINIMAX_API_KEY="your_key_here"
+  ```
 
 ---
 
 ## Maintenance
 
-- **Check Status**: Run `opencode providers list` to see what is still logged in.
+- **Check Connections**: `opencode providers list`
 - **Switch Models**: Use the `-m` flag (e.g., `opencode run -m google/gemini-3.1-pro`).
+- **Cost Tracking**: Now that overrides are removed, cost tracking in the status line relies on OpenCode's internal database. If costs don't show, you can re-add them as "model overrides" without defining the whole provider.

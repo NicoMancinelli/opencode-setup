@@ -27,6 +27,11 @@ This setup is optimized for **OAuth authentication** to your paid consumer subsc
 
 Refer to [AI_STRATEGY.md](./AI_STRATEGY.md) for detailed setup and usage.
 
+## Documentation
+
+- [AI_STRATEGY.md](./AI_STRATEGY.md): Guidelines for using your AI subscriptions.
+- [WORK_LOG.md](./WORK_LOG.md): Full history of modifications for AI tool synchronization.
+
 ## Maintenance
 
 To update all plugins to their latest versions, run:

@@ -15,6 +15,7 @@
       "models": {
         "m2.7": {
           "name": "MiniMax-M2.7",
+          "cost": { "input": 0.0000002, "output": 0.0000008 },
           "modalities": { "input": ["text"], "output": ["text"] }
         }
       }
