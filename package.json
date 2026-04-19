@@ -2,8 +2,7 @@
   "scripts": {
     "upgrade-plugins": "npm install @opencode-ai/plugin@latest @kilocode/plugin@latest",
     "format": "prettier --write '**/*.{json,md,yml}'",
-    "sync": "./scripts/sync.sh",
-    "check-models": "./scripts/nanogpt-models.sh"
+    "sync": "./scripts/sync.sh"
   },
   "dependencies": {
     "@kilocode/plugin": "^7.2.14",

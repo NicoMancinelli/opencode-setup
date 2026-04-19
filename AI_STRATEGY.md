@@ -1,39 +1,34 @@
-# AI Subscription Strategy for OpenCode
+# AI Subscription Strategy for OpenCode (Direct Setup)
 
-To get the most out of your subscriptions within OpenCode, follow this tiered strategy:
+This guide outlines how to use your direct AI subscriptions with OpenCode for maximum performance and context.
 
-## 1. Primary Workhorse: NanoGPT
+## 1. Primary Coding: Anthropic (Claude 3.5 Sonnet)
 
-Since you have a **NanoGPT subscription**, use it as your default provider. It acts as an aggregator and likely supports most of your other subscriptions (Claude, Gemini, GPT-4) through a single balance/API key.
+Use **Anthropic Direct** for your day-to-day coding. Claude 3.5 Sonnet is currently the gold standard for code generation and refactoring.
 
-- **Model Recommendation**: `nanogpt/claude-3.5-sonnet` for almost all coding tasks.
-- **Why**: Fastest access to multiple models without managing 5 different keys.
+- **Model**: `anthropic/claude-3.5-sonnet`
+- **Why**: Best reasoning/code quality balance. Direct access ensures lowest latency.
 
-## How to Verify Free Models (NanoGPT)
+## 2. Large Codebase Analysis: Google Gemini 3.1 Pro
 
-To ensure you are using models that are **included in your plan** and not consuming extra credits:
+Use **Google Direct** when you need to process massive amounts of data or entire repositories.
 
-1.  **Run the checker**: `npm run check-models`
-2.  **Look for Subscription Models**: Only models listed under "Included in your Subscription" are part of your monthly plan.
-3.  **Check for ':free'**: Some models are free for everyone and will have a `:free` suffix.
+- **Model**: `google/gemini-3.1-pro`
+- **Why**: 1 million token context window. Superior for high-reasoning tasks across multiple files.
 
-## 2. Large Context & Advanced Reasoning: Gemini 3.1 Pro
+## 3. Specialized Reasoning: OpenAI (o1-preview / GPT-4o)
 
-As of March 2026, **Gemini 3.1 Pro** is the state-of-the-art for large context (1M tokens) and agentic reasoning.
+Use **OpenAI Direct** for tasks where you need specific OpenAI behaviors or the latest o1 reasoning models.
 
-- **Setup**: Use `nanogpt/gemini-3.1-pro` for tasks requiring deep thinking or massive codebase analysis.
-- **Why**: 80.6% on SWE-Bench Verified and a 65k output token limit.
+- **Model**: `openai/o1-preview` or `openai/gpt-4o`
+- **Why**: o1 is excellent for complex logic puzzles and architectural planning.
 
-## 3. High-Precision Coding: Claude Max (Direct)
+## 4. MiniMax Reasoning: MiniMax.io
 
-While NanoGPT provides Claude, using the **Anthropic API** directly can sometimes offer better rate limits or lower latency if you have a separate API credits balance.
+Use **MiniMax** as a high-performance alternative for reasoning tasks.
 
-- **Setup**: Use the `anthropic` provider in `global.json`.
-
-## 4. Specialized Tasks: MiniMax & Codex
-
-- **MiniMax**: Great for specialized reasoning or as a fallback. Use the `minimax` provider with the `MiniMax-M2.7` model.
-- **Codex/GPT-4o**: If you have a specific Codex or OpenAI subscription, use the `openai` provider.
+- **Model**: `minimax/m2.7`
+- **Why**: Specialized reasoning performance, useful for diverse perspectives on complex problems.
 
 ---
 
@@ -42,17 +37,23 @@ While NanoGPT provides Claude, using the **Anthropic API** directly can sometime
 Add these to your `~/.zshrc`:
 
 ```bash
-export NANOGPT_API_KEY="sk-nano-..."
-export MINIMAX_API_KEY="your_key"
 export ANTHROPIC_API_KEY="sk-ant-..."
 export GEMINI_API_KEY="your_google_ai_studio_key"
+export OPENAI_API_KEY="sk-..."
+export MINIMAX_API_KEY="your_minimax_key"
 ```
 
 ## How to Switch Models
 
-You can switch models on the fly with the `-m` flag:
+Use the `-m` flag to jump between providers based on your task:
 
 ```bash
-opencode run -m gemini/1.5-pro "Review these 50 files for bugs"
-opencode run -m minimax/m2.7 "Refactor this logic"
+# For a quick code fix
+opencode run -m anthropic/claude-3.5-sonnet "Fix this bug"
+
+# For analyzing a whole folder
+opencode run -m google/gemini-3.1-pro "Explain how this architecture works"
+
+# For deep architectural logic
+opencode run -m openai/o1-preview "Design a migration strategy for this database"
 ```

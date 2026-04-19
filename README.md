@@ -12,20 +12,18 @@ This directory contains the configuration and plugins for my OpenCode setup.
 - `./scripts/install.sh`: Full setup on a new machine. Automatically symlinks `config/global.json` to `~/.config/opencode/opencode.json`.
 - `./scripts/sync.sh`: Pulls the latest config from GitHub and runs `install.sh` to apply updates seamlessly.
 - `./scripts/check-health.sh`: Verify the current environment.
-- `npm run check-models`: Lists NanoGPT models included in your subscription and checks your balance.
 - `npm run format`: Formats JSON and Markdown files using Prettier.
 - `npm run upgrade-plugins`: Update all plugins.
 
-## AI Subscription Optimization
+## AI Subscription Strategy
 
-To optimize your AI usage and keep costs low while accessing the best models:
+This setup is optimized for **direct API access** to your primary subscriptions (Anthropic, Google, OpenAI, MiniMax). This ensures:
 
-1.  **Use OpenRouter**: Consolidate all your subscriptions (Anthropic, OpenAI, Google) into one API key.
-2.  **Config Template**: See `config/opencode.json.example` for a setup that uses OpenRouter.
-3.  **Key Management**: Export your API keys in your `~/.zshrc`:
-    ```bash
-    export OPENROUTER_API_KEY="your_key_here"
-    ```
+- **Lowest Latency**: Direct connection to provider servers.
+- **Maximum Context**: Full access to 1M+ token windows (e.g., Gemini 3.1 Pro).
+- **Latest Features**: Day-one access to new reasoning models (e.g., OpenAI o1).
+
+Refer to [AI_STRATEGY.md](./AI_STRATEGY.md) for detailed usage guidelines.
 
 ## Maintenance
 
@@ -46,4 +44,6 @@ npm run upgrade-plugins
 - **2026-04-19**: Migrated from Bun to npm for stability. Added health checks and automated update monitoring.
 - **2026-04-19**: Added GitHub Action for weekly plugin update notifications.
 - **2026-04-19**: Introduced `install.sh` for easier machine synchronization.
-- **2026-04-19**: Added OpenRouter optimization strategy to access multiple LLMs via one provider.
+- **2026-04-19**: Shifted to a direct-provider AI strategy (Anthropic, Google, OpenAI, MiniMax) for better performance and latency.
+- **2026-04-19**: Shifted to a true "dotfiles" approach by tracking the global config in Git and symlinking it via `install.sh`.
+- **2026-04-19**: Added `sync.sh` for easy updating across machines and introduced `Prettier` for consistent formatting.

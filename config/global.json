@@ -1,67 +1,88 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "nanogpt": {
+    "anthropic": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "NanoGPT",
+      "name": "Anthropic (Direct)",
       "options": {
-        "baseURL": "https://nano-gpt.com/api/v1",
+        "baseURL": "https://api.anthropic.com/v1",
         "headers": {
-          "Authorization": "Bearer ${NANOGPT_API_KEY}"
+          "x-api-key": "${ANTHROPIC_API_KEY}",
+          "anthropic-version": "2023-06-01"
         }
       },
       "models": {
         "claude-3.5-sonnet": {
-          "name": "anthropic/claude-3.5-sonnet",
-          "cost": {
-            "input": 0.000003,
-            "output": 0.000015
-          },
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          }
+          "name": "claude-3-5-sonnet-20241022",
+          "cost": { "input": 0.000003, "output": 0.000015 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
         },
-        "gemini-3.1-pro": {
-          "name": "google/gemini-3.1-pro",
-          "cost": {
-            "input": 0.000002,
-            "output": 0.000012
-          },
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          }
-        },
-        "gemini-1.5-pro": {
-          "name": "google/gemini-1.5-pro",
-          "cost": {
-            "input": 0.00000125,
-            "output": 0.00000375
-          },
-          "modalities": {
-            "input": ["text", "image"],
-            "output": ["text"]
-          }
+        "claude-3-opus": {
+          "name": "claude-3-opus-20240229",
+          "cost": { "input": 0.000015, "output": 0.000075 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
         }
       }
     },
-    "omlx": {
+    "google": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "oMLX",
+      "name": "Google Gemini (Direct)",
       "options": {
-        "baseURL": "http://127.0.0.1:8000/v1"
+        "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "headers": {
+          "Authorization": "Bearer ${GEMINI_API_KEY}"
+        }
       },
       "models": {
-        "gemma4": {
-          "name": "gemma4",
-          "modalities": {
-            "input": ["text"],
-            "output": ["text"]
-          }
+        "gemini-3.1-pro": {
+          "name": "gemini-3.1-pro",
+          "cost": { "input": 0.000002, "output": 0.000012 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "gemini-1.5-pro": {
+          "name": "gemini-1.5-pro",
+          "cost": { "input": 0.00000125, "output": 0.00000375 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        }
+      }
+    },
+    "openai": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "OpenAI (Direct)",
+      "options": {
+        "baseURL": "https://api.openai.com/v1",
+        "headers": {
+          "Authorization": "Bearer ${OPENAI_API_KEY}"
+        }
+      },
+      "models": {
+        "gpt-4o": {
+          "name": "gpt-4o",
+          "cost": { "input": 0.0000025, "output": 0.00001 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "o1-preview": {
+          "name": "o1-preview",
+          "cost": { "input": 0.000015, "output": 0.00006 }
+        }
+      }
+    },
+    "minimax": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MiniMax",
+      "options": {
+        "baseURL": "https://api.minimax.io/v1",
+        "headers": {
+          "Authorization": "Bearer ${MINIMAX_API_KEY}"
+        }
+      },
+      "models": {
+        "m2.7": {
+          "name": "MiniMax-M2.7",
+          "modalities": { "input": ["text"], "output": ["text"] }
         }
       }
     }
   },
-  "model": "nanogpt/claude-3.5-sonnet"
+  "model": "anthropic/claude-3.5-sonnet"
 }
