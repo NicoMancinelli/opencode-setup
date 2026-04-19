@@ -27,7 +27,14 @@ for plugin in "@opencode-ai/plugin" "@kilocode/plugin"; do
     fi
 done
 
-# 4. Check Git status
+# 4. Check global config symlink
+if [ -L "$HOME/.config/opencode/opencode.json" ]; then
+    echo "✅ Global config is symlinked."
+else
+    echo "⚠️ Global config is NOT symlinked. Run './scripts/install.sh' to fix."
+fi
+
+# 5. Check Git status
 if [ -d ".git" ]; then
     echo "✅ Git repository initialized."
 else
