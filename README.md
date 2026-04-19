@@ -11,19 +11,21 @@ This directory contains the configuration and plugins for my OpenCode setup.
 
 - `./scripts/install.sh`: Full setup on a new machine. Automatically symlinks `config/global.json` to `~/.config/opencode/opencode.json`.
 - `./scripts/sync.sh`: Pulls the latest config from GitHub and runs `install.sh` to apply updates seamlessly.
+- `npm run login-all`: Guided walkthrough to link your paid subscriptions (Claude, Gemini, OpenAI, Copilot) via OAuth.
 - `./scripts/check-health.sh`: Verify the current environment.
 - `npm run format`: Formats JSON and Markdown files using Prettier.
 - `npm run upgrade-plugins`: Update all plugins.
 
-## AI Subscription Strategy
+## AI Subscription Strategy (OAuth-First)
 
-This setup is optimized for **direct API access** to your primary subscriptions (Anthropic, Google, OpenAI, MiniMax). This ensures:
+This setup is optimized for **OAuth authentication** to your paid consumer subscriptions. By logging in directly, OpenCode can utilize your monthly quotas from:
 
-- **Lowest Latency**: Direct connection to provider servers.
-- **Maximum Context**: Full access to 1M+ token windows (e.g., Gemini 3.1 Pro).
-- **Latest Features**: Day-one access to new reasoning models (e.g., OpenAI o1).
+- **Claude Pro (Anthropic)**
+- **Gemini Advanced (Google)**
+- **ChatGPT Plus (OpenAI)**
+- **GitHub Copilot (Codex)**
 
-Refer to [AI_STRATEGY.md](./AI_STRATEGY.md) for detailed usage guidelines.
+Refer to [AI_STRATEGY.md](./AI_STRATEGY.md) for detailed setup and usage.
 
 ## Maintenance
 

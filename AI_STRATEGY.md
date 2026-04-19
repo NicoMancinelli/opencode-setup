@@ -1,59 +1,53 @@
-# AI Subscription Strategy for OpenCode (Direct Setup)
+# AI Subscription Strategy (OAuth-First)
 
-This guide outlines how to use your direct AI subscriptions with OpenCode for maximum performance and context.
+This setup is optimized to use your **paid consumer subscriptions** (Claude Max, Gemini Advanced, ChatGPT Plus, GitHub Copilot) via OAuth. This is the most cost-effective way as it utilizes the monthly plans you already pay for.
 
-## 1. Primary Coding: Anthropic (Claude 3.5 Sonnet)
+## 🔑 Linking Your Subscriptions
 
-Use **Anthropic Direct** for your day-to-day coding. Claude 3.5 Sonnet is currently the gold standard for code generation and refactoring.
+Run the login helper to connect each provider to OpenCode:
 
-- **Model**: `anthropic/claude-3.5-sonnet`
-- **Why**: Best reasoning/code quality balance. Direct access ensures lowest latency.
+```bash
+npm run login-all
+```
 
-## 2. Large Codebase Analysis: Google Gemini 3.1 Pro
+## 1. Primary Coding: Anthropic (OAuth)
 
-Use **Google Direct** when you need to process massive amounts of data or entire repositories.
+Utilizes your **Claude Max** subscription.
+
+- **Model**: `anthropic/claude-3-7-sonnet-20250219`
+- **Why**: Best-in-class coding performance included in your $20/mo plan.
+
+## 2. Context Giant: Google Gemini (OAuth)
+
+Utilizes your **Gemini Advanced** subscription.
 
 - **Model**: `google/gemini-3.1-pro`
-- **Why**: 1 million token context window. Superior for high-reasoning tasks across multiple files.
+- **Why**: 1M+ context window. Perfect for "reading" your whole project at once.
 
-## 3. Specialized Reasoning: OpenAI (o1-preview / GPT-4o)
+## 3. Specialized Logic: OpenAI (OAuth)
 
-Use **OpenAI Direct** for tasks where you need specific OpenAI behaviors or the latest o1 reasoning models.
+Utilizes your **ChatGPT Plus** subscription.
 
-- **Model**: `openai/o1-preview` or `openai/gpt-4o`
-- **Why**: o1 is excellent for complex logic puzzles and architectural planning.
+- **Model**: `openai/o1-preview`
+- **Why**: Advanced reasoning for complex architecture and planning.
 
-## 4. MiniMax Reasoning: MiniMax.io
+## 4. Coding Specialist: GitHub Copilot (OAuth)
 
-Use **MiniMax** as a high-performance alternative for reasoning tasks.
+Utilizes your **GitHub Copilot/Codex** subscription.
 
-- **Model**: `minimax/m2.7`
-- **Why**: Specialized reasoning performance, useful for diverse perspectives on complex problems.
+- **Model**: `github-copilot/gpt-4o` (or available models)
+- **Why**: Seamless integration for IDE-like behaviors.
+
+## 5. Token Plan: MiniMax (OAuth/API)
+
+Utilizes your **MiniMax.io** token plan.
+
+- **Model**: `minimax-coding-plan/MiniMax-M2.7`
+- **Why**: High-speed reasoning with dedicated token quotas.
 
 ---
 
-## Required Environment Variables
+## Maintenance
 
-Add these to your `~/.zshrc`:
-
-```bash
-export ANTHROPIC_API_KEY="sk-ant-..."
-export GEMINI_API_KEY="your_google_ai_studio_key"
-export OPENAI_API_KEY="sk-..."
-export MINIMAX_API_KEY="your_minimax_key"
-```
-
-## How to Switch Models
-
-Use the `-m` flag to jump between providers based on your task:
-
-```bash
-# For a quick code fix
-opencode run -m anthropic/claude-3.5-sonnet "Fix this bug"
-
-# For analyzing a whole folder
-opencode run -m google/gemini-3.1-pro "Explain how this architecture works"
-
-# For deep architectural logic
-opencode run -m openai/o1-preview "Design a migration strategy for this database"
-```
+- **Check Status**: Run `opencode providers list` to see what is still logged in.
+- **Switch Models**: Use the `-m` flag (e.g., `opencode run -m google/gemini-3.1-pro`).

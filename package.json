@@ -2,7 +2,8 @@
   "scripts": {
     "upgrade-plugins": "npm install @opencode-ai/plugin@latest @kilocode/plugin@latest",
     "format": "prettier --write '**/*.{json,md,yml}'",
-    "sync": "./scripts/sync.sh"
+    "sync": "./scripts/sync.sh",
+    "login-all": "./scripts/login-subscriptions.sh"
   },
   "dependencies": {
     "@kilocode/plugin": "^7.2.14",
