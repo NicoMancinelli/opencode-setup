@@ -10,15 +10,19 @@ Since you have a **NanoGPT subscription**, use it as your default provider. It a
 - **Why**: Fastest access to multiple models without managing 5 different keys.
 
 ## How to Verify Free Models (NanoGPT)
+
 To ensure you are using models that are **included in your plan** and not consuming extra credits:
+
 1.  **Run the checker**: `npm run check-models`
 2.  **Look for Subscription Models**: Only models listed under "Included in your Subscription" are part of your monthly plan.
 3.  **Check for ':free'**: Some models are free for everyone and will have a `:free` suffix.
 
-If you have a **Gemini subscription**, you likely have access to **Gemini 1.5 Pro** via Google AI Studio.
+## 2. Large Context & Advanced Reasoning: Gemini 3.1 Pro
 
-- **Setup**: Use the `gemini` provider in `global.json` for tasks where you need to attach many large files (up to 2 million tokens).
-- **Direct API**: `https://generativelanguage.googleapis.com/v1beta/openai`
+As of March 2026, **Gemini 3.1 Pro** is the state-of-the-art for large context (1M tokens) and agentic reasoning.
+
+- **Setup**: Use `nanogpt/gemini-3.1-pro` for tasks requiring deep thinking or massive codebase analysis.
+- **Why**: 80.6% on SWE-Bench Verified and a 65k output token limit.
 
 ## 3. High-Precision Coding: Claude Max (Direct)
 
