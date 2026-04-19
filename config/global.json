@@ -2,6 +2,50 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "anthropic/claude-3-7-sonnet-20250219",
   "small_model": "google/gemini-2.0-flash-lite",
+  "instructions": ["~/.opencode/config/global-rules.md"],
+  "mcp": {
+    "github": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{env:GITHUB_TOKEN}"
+      }
+    },
+    "memory": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"]
+    },
+    "google-search": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-google-search"],
+      "env": {
+        "GOOGLE_API_KEY": "{env:GOOGLE_SEARCH_API_KEY}",
+        "GOOGLE_CSE_ID": "{env:GOOGLE_SEARCH_ENGINE_ID}"
+      }
+    },
+    "sequentialthinking": {
+      "type": "local",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequentialthinking"]
+    }
+  },
+  "command": {
+    "sync": {
+      "description": "Pull latest configuration and sync setup",
+      "script": "npm run sync"
+    },
+    "health": {
+      "description": "Run the OpenCode health check",
+      "script": "./scripts/check-health.sh"
+    },
+    "push": {
+      "description": "Commit and push setup changes to GitHub",
+      "script": "git add . && git commit -m 'Manual setup update' && git push"
+    }
+  },
   "provider": {
     "minimax": {
       "npm": "@ai-sdk/openai-compatible",

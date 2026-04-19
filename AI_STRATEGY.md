@@ -1,46 +1,39 @@
-# AI Subscription Strategy (OAuth & Direct)
+# AI Subscription & Power-User Strategy
 
-This setup is optimized to use your **paid consumer subscriptions** (Claude Max, Gemini Advanced, ChatGPT Plus) via OAuth, while keeping specialized plans (MiniMax) on direct API keys.
+This setup is optimized to use your **paid consumer subscriptions** (Claude Max, Gemini Advanced, ChatGPT Plus) via OAuth, while supercharging OpenCode with native plugins and MCP servers.
 
-## 🔑 Why Your Setup May Have Felt "Broken"
+## 🔑 Linking Your Subscriptions
 
-If you were previously seeing "Provider not found" or "API Key Required" errors despite having a subscription, it was likely because your `global.json` had **manual provider overrides**.
-
-I have **removed these overrides**. OpenCode will now automatically use your **active OAuth sessions** if you are logged in.
-
-## 🛠️ Linking Your Subscriptions
-
-You MUST link your subscriptions via the browser for them to work in the CLI. Run the helper to start:
+Run the login helper to connect each provider:
 
 ```bash
 npm run login-all
 ```
 
-## 1. Primary Coding: Anthropic (Claude Max)
+## 🛠️ Power-User Shortcuts (Slash Commands)
 
-- **Model**: `anthropic/claude-3-7-sonnet-20250219`
-- **Authentication**: OAuth (included in your $20/mo plan).
-- **Why**: State-of-the-art coding intelligence.
+Use these native OpenCode commands to manage your setup:
 
-## 2. Context Giant: Google Gemini (Advanced)
+- `/sync`: Pull latest config from GitHub and apply it.
+- `/health`: Verify your binary, plugins, and symlinks.
+- `/push`: Save your current setup changes to GitHub.
 
-- **Model**: `google/gemini-3.1-pro`
-- **Authentication**: OAuth (utilizes your Gemini Advanced quota).
-- **Why**: Best for large repository analysis (1M+ tokens).
+## 🧠 Model Context Protocol (MCP)
 
-## 3. Specialized Logic: OpenAI (ChatGPT Plus)
+The following "hands" are enabled for your AI:
 
-- **Model**: `openai/o1-preview` or `openai/gpt-4o`
-- **Authentication**: OAuth (utilizes your ChatGPT Plus quota).
+1. **GitHub**: Manage issues, PRs, and repos directly. Requires `GITHUB_TOKEN` in `~/.zshrc`.
+2. **Google Search**: Grounding via actual web data. Requires `GOOGLE_SEARCH_API_KEY`.
+3. **Memory**: Persistent storage of project facts across different chat sessions.
+4. **Sequential Thinking**: Special reasoning tool that helps the AI "pause and think" through complex logic.
 
-## 4. Reasoning Specialist: MiniMax.io
+## 📜 Engineering Standards
 
-- **Model**: `minimax/m2.7`
-- **Authentication**: **API Key** (Required).
-- **Setup**: Export your key in `~/.zshrc`:
-  ```bash
-  export MINIMAX_API_KEY="your_key_here"
-  ```
+Your AI now follows **[Global Rules](./config/global-rules.md)**. It will default to:
+
+- TypeScript-first development.
+- Functional programming patterns.
+- Concise, high-precision responses.
 
 ---
 
@@ -48,4 +41,3 @@ npm run login-all
 
 - **Check Connections**: `opencode providers list`
 - **Switch Models**: Use the `-m` flag (e.g., `opencode run -m google/gemini-3.1-pro`).
-- **Cost Tracking**: Now that overrides are removed, cost tracking in the status line relies on OpenCode's internal database. If costs don't show, you can re-add them as "model overrides" without defining the whole provider.
