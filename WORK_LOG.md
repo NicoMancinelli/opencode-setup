@@ -30,6 +30,22 @@ This file tracks all modifications and architectural changes made to this reposi
 - **OAuth Integration**: Added a `login-subscriptions.sh` helper (`npm run login-all`) to facilitate linking paid consumer subscriptions (Claude Max, Gemini Advanced, etc.) via OAuth.
 - **Documentation**: Created `AI_STRATEGY.md` to guide model selection based on the 2026 landscape (e.g., favoring Gemini 3.1 Pro for 1M context tasks).
 
+### 5. Repository Structure
+
+- `bin/`: (Ignored) Binary storage.
+- `config/`: Configuration files and examples.
+- `scripts/`: Maintenance and setup utilities.
+- `.github/`: CI/CD workflows.
+- `WORK_LOG.md`: This file.
+
+### 6. OAuth & Subscription Pivot
+
+- **Removed Provider Overrides**: Deleted manual `anthropic`, `google`, and `openai` provider blocks from `global.json`. This ensures OpenCode utilizes active **OAuth sessions** (paid consumer subscriptions) rather than falling back to API keys.
+- **Retained MiniMax API**: Kept the `minimax` provider configuration as it typically requires a direct API key for token plans.
+- **Enhanced Model Strategy**: Updated `AI_STRATEGY.md` to prioritize OAuth-based workflows for Claude Max, Gemini Advanced, and ChatGPT Plus.
+- **Login Automation**: Refined `scripts/login-subscriptions.sh` and `npm run login-all` to guide the user through interactive OAuth linking.
+- **Work Log Creation**: Created `WORK_LOG.md` (this file) to maintain a persistent history of setup changes for cross-tool synchronization.
+
 ### 7. Power-User Tweaks & MCP Integration
 
 - **Global Rules Engine**: Created `config/global-rules.md` to enforce high engineering standards (conciseness, TS-first, functional style) across all AI sessions.
@@ -42,4 +58,9 @@ This file tracks all modifications and architectural changes made to this reposi
   - `/sync`: Pull and apply latest repo changes.
   - `/health`: Run the environment health check.
   - `/push`: Quickly commit and sync setup changes to GitHub.
-- **Improved README & Strategy**: Documented the new rules engine and MCP dependencies.
+
+### 8. CLI Tooling & AI Aliases
+
+- **Modern CLI Stack**: Installed `tree`, `tokei`, `gum`, and `jq` via Homebrew to provide the AI with better "eyes" and interactive capabilities.
+- **AI-Optimized Aliases**: Added high-context aliases to `~/.zshrc` (e.g., `aidiff`, `aitree`, `aicontext`) to help AI agents map codebases with minimum tokens.
+- **Context Compression**: Introduced the `aicontext` command to bundle project identity (README, structure, dependencies) for rapid agent onboarding.
