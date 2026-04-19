@@ -12,6 +12,7 @@ This directory contains the configuration and plugins for my OpenCode setup.
 - `./scripts/install.sh`: Full setup on a new machine. Automatically symlinks `config/global.json` to `~/.config/opencode/opencode.json`.
 - `./scripts/sync.sh`: Pulls the latest config from GitHub and runs `install.sh` to apply updates seamlessly.
 - `./scripts/check-health.sh`: Verify the current environment.
+- `npm run check-models`: Lists NanoGPT models included in your subscription and checks your balance.
 - `npm run format`: Formats JSON and Markdown files using Prettier.
 - `npm run upgrade-plugins`: Update all plugins.
 
