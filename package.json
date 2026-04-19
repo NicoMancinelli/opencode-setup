@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "upgrade-plugins": "npm install @opencode-ai/plugin@latest @kilocode/plugin@latest"
+  },
+  "dependencies": {
+    "@kilocode/plugin": "^7.2.14",
+    "@opencode-ai/plugin": "^1.14.18"
+  }
+}
