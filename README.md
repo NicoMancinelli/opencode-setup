@@ -12,7 +12,8 @@ This directory contains the configuration and plugins for my OpenCode setup.
 - `./scripts/install.sh`: Full setup on a new machine. Automatically symlinks `config/global.json` to `~/.config/opencode/opencode.json`.
 - `./scripts/sync.sh`: Pulls the latest config from GitHub and runs `install.sh` to apply updates seamlessly.
 - `npm run login-all`: Guided walkthrough to link your paid subscriptions (Claude, Gemini, OpenAI, Copilot) via OAuth.
-- `./scripts/check-health.sh`: Verify the current environment.
+- `npm run scan-secrets`: Checks your configuration for accidental API key leaks.
+- `npm run health`: Runs the environment health check (aliased to `/health` in-app).
 - `npm run format`: Formats JSON and Markdown files using Prettier.
 - `npm run upgrade-plugins`: Update all plugins.
 
@@ -24,6 +25,12 @@ This setup is optimized for **OAuth authentication** to your paid consumer subsc
 - **Gemini Advanced (Google)**
 - **ChatGPT Plus (OpenAI)**
 - **GitHub Copilot (Codex)**
+
+## Power-User Customizations
+
+- **Browser Access**: The `@different-ai/opencode-browser` plugin is installed, allowing agents to browse the web for information.
+- **TUI Tweaks**: Custom theme (`vitesse-dark`), animations, and keybinds configured in `config/tui.json`.
+- **Security**: A Git `pre-push` hook automatically runs `scan-secrets.sh` to prevent leaking keys to GitHub.
 
 Refer to [AI_STRATEGY.md](./AI_STRATEGY.md) for detailed setup and usage.
 

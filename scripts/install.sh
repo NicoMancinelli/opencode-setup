@@ -11,14 +11,20 @@ echo "🚀 Setting up OpenCode environment..."
 echo "📦 Installing plugins..."
 npm install
 
-# 2. Setup Global Config Symlink
-echo "🔗 Setting up global config symlink..."
+# 2. Setup Config Symlinks
+echo "🔗 Setting up config symlinks..."
 mkdir -p ~/.config/opencode
+
+# Global Config
 if [ -f "$HOME/.opencode/config/global.json" ]; then
     ln -sf "$HOME/.opencode/config/global.json" "$HOME/.config/opencode/opencode.json"
     echo "✅ Global config linked."
-else
-    echo "⚠️ No global.json found in ~/.opencode/config/, skipping symlink."
+fi
+
+# TUI Config
+if [ -f "$HOME/.opencode/config/tui.json" ]; then
+    ln -sf "$HOME/.opencode/config/tui.json" "$HOME/.config/opencode/tui.json"
+    echo "✅ TUI config linked."
 fi
 
 # 3. Setup PATH (for zsh)

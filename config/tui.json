@@ -1,0 +1,11 @@
+{
+  "theme": "vitesse-dark",
+  "animations_enabled": true,
+  "layout": "stretch",
+  "keybinds": {
+    "app_exit": ["ctrl+c"],
+    "prompt_submit": ["enter"],
+    "prompt_clear": ["ctrl+u"],
+    "sidebar_toggle": ["ctrl+b"]
+  }
+}

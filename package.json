@@ -1,13 +1,17 @@
 {
   "scripts": {
-    "upgrade-plugins": "npm install @opencode-ai/plugin@latest @kilocode/plugin@latest",
+    "upgrade-plugins": "npm install @opencode-ai/plugin@latest @kilocode/plugin@latest @different-ai/opencode-browser@latest opencode-skills-collection@latest",
     "format": "prettier --write '**/*.{json,md,yml}'",
     "sync": "./scripts/sync.sh",
-    "login-all": "./scripts/login-subscriptions.sh"
+    "login-all": "./scripts/login-subscriptions.sh",
+    "scan-secrets": "./scripts/scan-secrets.sh",
+    "health": "./scripts/check-health.sh"
   },
   "dependencies": {
+    "@different-ai/opencode-browser": "^4.6.1",
     "@kilocode/plugin": "^7.2.14",
-    "@opencode-ai/plugin": "^1.14.18"
+    "@opencode-ai/plugin": "^1.14.18",
+    "opencode-skills-collection": "^2.0.163"
   },
   "devDependencies": {
     "prettier": "^3.8.3"
