@@ -2,7 +2,7 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "anthropic/claude-3-7-sonnet-20250219",
   "small_model": "google/gemini-2.0-flash-lite",
-  "instructions": ["~/.opencode/config/global-rules.md"],
+  "instructions": ["~/.opencode/config/global-rules.md", "./MEMORIES.md"],
   "agent": {
     "plan": {
       "model": {
@@ -81,6 +81,14 @@
     "review": {
       "description": "Perform a deep logic review of staged changes",
       "script": "opencode run --agent reviewer \"Review my staged changes and check for logical errors or style violations.\""
+    },
+    "brain-init": {
+      "description": "Initialize Agentic Stack and Memories for the current project",
+      "script": "cp ~/.opencode/config/MEMORIES.template.md ./MEMORIES.md && agentic-stack opencode"
+    },
+    "private": {
+      "description": "Switch to local privacy-mode for sensitive code",
+      "script": "opencode run -m omlx/local-privacy \"(Private Session)\""
     }
   },
   "provider": {
@@ -97,6 +105,19 @@
         "m2.7": {
           "name": "MiniMax-M2.7",
           "cost": { "input": 0.0000002, "output": 0.0000008 },
+          "modalities": { "input": ["text"], "output": ["text"] }
+        }
+      }
+    },
+    "omlx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Local Privacy Mode (oMLX)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1"
+      },
+      "models": {
+        "local-privacy": {
+          "name": "llama-3.2-3b-instruct",
           "modalities": { "input": ["text"], "output": ["text"] }
         }
       }
