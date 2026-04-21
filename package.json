@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@different-ai/opencode-browser": "^4.6.1",
-    "@kilocode/plugin": "^7.2.14",
+    "@kilocode/plugin": "7.2.10",
     "@opencode-ai/plugin": "^1.14.18",
     "opencode-skills-collection": "^2.0.163"
   },

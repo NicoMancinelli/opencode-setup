@@ -43,8 +43,11 @@ This file tracks all modifications and architectural changes made to this reposi
 - **Advanced Plugins**: Installed `@different-ai/opencode-browser` for agent web browsing and `opencode-skills-collection` for expanded capabilities.
 - **Security Guardrails**: Implemented a Git `pre-push` hook linked to `scripts/scan-secrets.sh` to prevent accidental API key leaks.
 
-### 7. CLI Tooling & AI Aliases
+### 8. Intelligent Agent Routing
 
-- **Modern CLI Stack**: Installed `tree`, `tokei`, `gum`, and `jq` via Homebrew to provide the AI with better "eyes".
-- **AI-Optimized Aliases**: Added high-context aliases to `~/.zshrc` (e.g., `aidiff`, `aitree`, `aicontext`) to help AI agents map codebases with minimum tokens.
-- **Context Compression**: Introduced the `aicontext` command to bundle project identity for rapid agent onboarding.
+- **Subscription Role Mapping**: Mapped specific AI subscriptions to OpenCode's internal lifecycle:
+  - `plan`: OpenAI o1-preview (Highest reasoning for design).
+  - `build`: Claude 3.7 Sonnet (Reliable implementation).
+  - `title`, `summary`, `compaction`: MiniMax M2.7 (Fast & cost-effective background tasks).
+- **Specialized Agent Personalas**: Created dedicated configurations for `Architect`, `Reviewer`, and `Explorer` to utilize the full strengths of the 2026 model landscape.
+- **Git AI Automation**: Added a `/review` command to perform deep logic audits on staged changes before committing.

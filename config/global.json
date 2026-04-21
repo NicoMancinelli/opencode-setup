@@ -3,6 +3,39 @@
   "model": "anthropic/claude-3-7-sonnet-20250219",
   "small_model": "google/gemini-2.0-flash-lite",
   "instructions": ["~/.opencode/config/global-rules.md"],
+  "agent": {
+    "plan": {
+      "model": {
+        "providerID": "openai",
+        "modelID": "o1-preview"
+      },
+      "description": "System Architect - Focuses on deep reasoning and planning."
+    },
+    "build": {
+      "model": {
+        "providerID": "anthropic",
+        "modelID": "claude-3-7-sonnet-20250219"
+      }
+    },
+    "title": {
+      "model": {
+        "providerID": "minimax-coding-plan",
+        "modelID": "MiniMax-M2.7"
+      }
+    },
+    "summary": {
+      "model": {
+        "providerID": "minimax-coding-plan",
+        "modelID": "MiniMax-M2.7"
+      }
+    },
+    "compaction": {
+      "model": {
+        "providerID": "minimax-coding-plan",
+        "modelID": "MiniMax-M2.7"
+      }
+    }
+  },
   "mcp": {
     "github": {
       "type": "local",
@@ -44,6 +77,10 @@
     "push": {
       "description": "Commit and push setup changes to GitHub",
       "script": "git add . && git commit -m 'Manual setup update' && git push"
+    },
+    "review": {
+      "description": "Perform a deep logic review of staged changes",
+      "script": "opencode run --agent reviewer \"Review my staged changes and check for logical errors or style violations.\""
     }
   },
   "provider": {
